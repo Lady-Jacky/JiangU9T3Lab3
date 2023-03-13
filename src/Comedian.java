@@ -22,9 +22,10 @@ public class Comedian extends Performer {
     // it prints: "Let me run this new joke past my agent! Siri, dial 646-555-5555"
     // Then uncomment test code for Exercise 2 in Main.java and test
 
-
-
-
+    @Override
+    public void callAgent() {
+        System.out.println("Let me run this new joke past my agent! Siri, dial 646-555-5555");
+    }
 
     // EXERCISE 3: as you saw in exercise 1, when calling a superclass' CONSTRUCTOR from
     // a subclass' constructor, super MUST be the first line of code; is that the case for
@@ -35,8 +36,8 @@ public class Comedian extends Performer {
     // If it does compile, run test code for Exercise 3 to test
     @Override
     public void printInfo() {
-        super.printInfo(); // this calls the SUPERCLASS version of printInfo
         System.out.println("I will make you laugh!");
+        super.printInfo(); // this calls the SUPERCLASS version of printInfo
     }
 
     // Exercise 4: Override the perform() method so that the output for
@@ -44,6 +45,13 @@ public class Comedian extends Performer {
     // "Performing for an audience! Performance #1"
     // followed by EACH joke on a NEW line
 
+    @Override
+    public void perform() {
+        super.perform();
+        for(String j : jokes) {
+            System.out.println(j);
+        }
+    }
 
 
 
@@ -67,6 +75,11 @@ public class Comedian extends Performer {
     //    the method should do the standard rehearsal,
     //    followed by perform if performAfter is true.
 
-
+    public void rehearse(boolean performAfter) {
+        super.rehearse();
+        if(performAfter) {
+            perform();
+        }
+    }
 
 }
